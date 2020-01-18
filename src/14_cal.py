@@ -24,6 +24,23 @@ import calendar
 from datetime import datetime
 
 def print_calendar():
-  # TODO
-  pass
+  if len(sys.argv) == 1:
+    print(calendar.month(datetime.now().year, datetime.now().month))
+  elif len(sys.argv) == 2:
+    try:
+        num_month = int(sys.argv[1])
+        print(calendar.month(datetime.now().year, num_month))
+    except (ValueError, IndexError):
+        print("Input must be in this format: `14_cal.py month [year]`")
+  elif len(sys.argv) == 3:
+    try:
+        num_month = int(sys.argv[1])
+        num_year = int(sys.argv[2])
+        print(calendar.month(num_year, num_month))
+    except (ValueError, IndexError):
+        print("Input must be in this format: `14_cal.py month [year]`")
+  else:
+    print("Input must follow this format: `14_cal.py month [year]`")
+    exit()
 
+print_calendar()
